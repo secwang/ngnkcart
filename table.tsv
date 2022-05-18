@@ -1,0 +1,4 @@
+SYNTAX	NAME	DESCRIPTION	EXAMPLE
++/	Sum	function to sum an array. Can be used with initial value.	+/1 2 3 4 5 -> +/(1 2;2 3)
+-':	Deltas	Function to find the differences between members of an array. Comes in various flavors.	-':1 2 3 4 -> 1 1 1 1
+|+:	Rotate 90 degrees	left  function which rotates a matrix 90 degrees left(counterclockwise).	(|+:)@3 3#!9 -> (2 5 8; 1 4 7;0 3 6) 
