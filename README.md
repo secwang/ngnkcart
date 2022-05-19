@@ -1,16 +1,15 @@
 # ngnkcart
-inspired by [aplcart](https://github.com/abrudz/aplcart) 
+cart for [ngn/k](https://codeberg.org/ngn/k)  
+inspired by [aplcart](https://github.com/abrudz/aplcart)  
+join [dicord](https://discord.gg/ZN9wVvpv)
 
 
 # design
 maintain the table.tsv file.  
-import tsv into sqlite for fulltext search and rank.  
-use sql.js-httpvfs on github pages.  (TODO)
+import tsv into sqlite for fulltext search and format check.  
+generate a static page.  (TODO)
 provide a discord bot for search.
 
-# convert tsv into sqlite3
-```
-sqlite3 table.sqlite3
-.mode tabs  
-.import table.tsv cart  
-```
+# commandline use
+Install fzf.
+add kcbin.sh to your $PATH.
