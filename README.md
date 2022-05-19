@@ -11,5 +11,5 @@ generate a static page.  (TODO)
 provide a discord bot for search.
 
 # commandline use
-Install (fzf)[https://github.com/junegunn/fzf].  
+Install [fzf](https://github.com/junegunn/fzf).  
 add kcbin.sh to your $PATH.
