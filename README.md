@@ -4,9 +4,9 @@ inspired by [aplcart](https://github.com/abrudz/aplcart)
 join The APL Farm [discord](https://discord.gg/ZN9wVvpv)
 
 # search 
-open [table.csv](https://github.com/secwang/ngnkcart/blob/main/table.tsv)
-type in "Search this file".  
-You can add this file to your bookmarks.
+open [table.csv](https://github.com/secwang/ngnkcart/blob/main/table.tsv).  
+type in "Search this file".    
+You can add this file to your bookmarks.  
 
 # design
 maintain the table.tsv file.  
