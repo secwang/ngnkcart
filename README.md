@@ -1,7 +1,7 @@
 # ngnkcart
 cart for [ngn/k](https://codeberg.org/ngn/k)  
 inspired by [aplcart](https://github.com/abrudz/aplcart)  
-join [dicord](https://discord.gg/ZN9wVvpv)
+join The APL Farm [discord](https://discord.gg/ZN9wVvpv)
 
 
 # design
