@@ -43,7 +43,7 @@ async def kch(ctx):
 kch -> show help
 kcs -> search in cart
 kcc -> add your code to cart, need code,name,description, example
-kcp -> table.csv permalink
+kcp -> table.tsv permalink
     '''
     await ctx.send(r)
 
