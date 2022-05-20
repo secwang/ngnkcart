@@ -43,6 +43,7 @@ async def kch(ctx):
 kch -> show help
 kcs -> search in cart
 kcc -> add your code to cart, need code,name,description, example
+kcp -> table.csv permalink
     '''
     await ctx.send(r)
 
@@ -60,6 +61,10 @@ async def kcs(ctx,key):
 async def kcc(ctx,code):
     r = commit(code)
     await ctx.send('Added to log. waiting merge into cart.')
+
+@bot.command()
+async def kcp(ctx):
+    await ctx.send('https://bit.ly/3MDQ4Zm')
 
 token = os.getenv('NGNKCARTBOT_TOKEN')
 bot.run(token)
