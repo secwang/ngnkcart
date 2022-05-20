@@ -1,18 +1,23 @@
 # ngnkcart
-cart for [ngn/k](https://codeberg.org/ngn/k)  
-inspired by [aplcart](https://github.com/abrudz/aplcart)  
-join The APL Farm [discord](https://discord.gg/ZN9wVvpv)
+Searchable database of snippets for [ngn/k](https://codeberg.org/ngn/k)
+Inspired by [aplcart](https://github.com/abrudz/aplcart)
+Join The APL Farm [discord](https://discord.gg/ZN9wVvpv) to contribute snippets,
+or just PR them.
 
-# search 
-open [table.csv](https://github.com/secwang/ngnkcart/blob/main/table.tsv).  
-type in "Search this file".    
-You can add this file to your bookmarks.  
+## search 
+For now, open [table.csv](https://github.com/secwang/ngnkcart/blob/main/table.tsv).
+Type in the github search box.
+You can add this file to your bookmarks.
 
-# design
-maintain the table.tsv file.  
-import tsv into sqlite for fulltext search and format check.  
-provide a discord search and commit, cli search,And a searchable tsv page.  
+## design
+All snippets are stored in the table.tsv file. Addition of snippets and maintenance happens there.
+Import the tsv into sqlite for fulltext search and format check.
+Goals:
+- [x] discord search and commit
+- [x] cli search
+- [x] searchable tsv page.
+- [ ] static web page
 
 # commandline use
-Install [fzf](https://github.com/junegunn/fzf).  
-add kcbin.sh to your $PATH.
+Install [fzf](https://github.com/junegunn/fzf).
+add kcbin.sh to your $PATH, or just run as is (`./kcbin.sh` for a fuzzy search).

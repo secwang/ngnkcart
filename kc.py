@@ -39,12 +39,13 @@ bot = commands.Bot(command_prefix='>')
 async def kch(ctx):
 
     c = count()
-    r = f'''cart:{c}
-kch -> show help
-kcs -> search in cart
-kcc -> add your code to cart, need code,name,description, example
-kcp -> table.tsv permalink
-    '''
+    r = f'''```
+Number of snippets: {c}
+kch -> show this help message
+kcs -> search ngnkcart
+kcc -> add your code to cart. Format: code, name, description, example
+kcp -> Permalink to table.tsv
+```    '''
     await ctx.send(r)
 
 
@@ -52,9 +53,9 @@ kcp -> table.tsv permalink
 async def kcs(ctx,key):
     r = search(key)
     if r:
-        await ctx.send(r)
+        await ctx.send("`" + r + "`")
     else:
-        await ctx.send('Oops.Not found.')
+        await ctx.send('Oops. Not found.')
 
 
 @bot.command()
@@ -63,7 +64,7 @@ async def kcc(ctx):
     msg = msg[3:]
 
     r = commit(msg)
-    await ctx.send('Added to log. waiting merge into cart.')
+    await ctx.send('Added to log. Will be manually merged into cart.')
 
 @bot.command()
 async def kcp(ctx):
