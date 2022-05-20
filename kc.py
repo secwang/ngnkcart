@@ -58,8 +58,11 @@ async def kcs(ctx,key):
 
 
 @bot.command()
-async def kcc(ctx,code):
-    r = commit(code)
+async def kcc(ctx):
+    msg = ctx.message.content
+    msg = msg[3:]
+
+    r = commit(msg)
     await ctx.send('Added to log. waiting merge into cart.')
 
 @bot.command()
