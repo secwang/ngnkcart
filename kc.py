@@ -53,7 +53,9 @@ kcp -> Permalink to table.tsv
 async def kcs(ctx,key):
     r = search(key)
     if r:
-        await ctx.send("`" + r + "`")
+        
+        #await ctx.send(r)
+        await ctx.send("```" + str(r) + "```")
     else:
         await ctx.send('Oops. Not found.')
 
