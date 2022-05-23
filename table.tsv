@@ -8,7 +8,7 @@ SYNTAX	NAME	DESCRIPTION	EXAMPLE
 rot:{y@(#y)!x+!#y}	Rotate	Rotate y by x 	rot[3;!10] -> 3 4 5 6 7 8 9 0 1 2
 "upr:{`c$x-(32*&97 26)x}"	Uppercase	Upper case of all alphabetic chars	"upr ""happy"" -> ""HAPPY"""
 nc -l 3000 | k	Remotely k 	Bind k process to 3000 port	nc 127.0.0.1 3000
-""."\\curl xxx""	Curl Call curl in k.	""\\curl"""
+"."\\curl 'xxx'""	Curl	Call curl in k.	"\\curl"
 +`a`b`c!3 3#!9	Create table	Create table by flip map	+`a`b`c!3 3#!9 -> +`a`b`c!(0 1 2;3 4 5;6 7 8)
 a,:`a`b`c!9,10,11	Insert	Append/insert row to table	a:+`a`b!(0 1 ; 2 3);a,`a`b!9,10 -> +`a`b!(0 1 9;2 3 10)
 a@(1<)_a[`a]	Select use where function	Select by where condition	a:+`a`b!(0 1 ; 2 3);a@(1<)_a[`a] -> +`a`b!(0 1;2 3)
