@@ -8,5 +8,5 @@ SYNTAX	NAME	DESCRIPTION	EXAMPLE
 rot:{y@(#y)!x+!#y}	Rotate	Rotate y by x 	rot[3;!10] -> 3 4 5 6 7 8 9 0 1 2
 "upr:{`c$x-(32*&97 26)x}"	Uppercase	Upper case of all alphabetic chars	"upr ""happy"" -> ""HAPPY"""
 nc -l 3000 | k	remotely k 	Bind k process to 3000 port	nc 127.0.0.1 3000
-+`a`b`c!3 3#!9	create table	Create table by rotate map	+`a`b`c!3 3#!9 -> +`a`b`c!(0 1 2;3 4 5;6 7 8)
++`a`b`c!3 3#!9	create table	Create table by flip map	+`a`b`c!3 3#!9 -> +`a`b`c!(0 1 2;3 4 5;6 7 8)
 a,:`a`b`c!9,10,11	insert	append/insert row to table	a:+`a`b!(0 1 ; 2 3);a,`a`b!9,10
