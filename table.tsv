@@ -12,3 +12,4 @@ nc -l 3000 | k	Remotely k 	Bind k process to 3000 port	nc 127.0.0.1 3000
 a,:`a`b`c!9,10,11	Insert	Append/insert row to table	a:+`a`b!(0 1 ; 2 3);a,`a`b!9,10 -> +`a`b!(0 1 9;2 3 10)
 a@(1<)_a[`a]	Select use where function	Select by where condition	a:+`a`b!(0 1 ; 2 3);a@(1<)_a[`a] -> +`a`b!(0 1;2 3)
 a@a[`a]?0	Select use ?	Select if equal	a:+`a`b!(0 1 ; 2 3);a@a[`a]?0 -> `a`b!0 2
+@[x;i;:;v]	Update	Update value at x[i] with v a:+`a`b!(0 1 ; 2 3);@[a;0;:;(3,4)] -> +`a`b!(3 1;4 3)
