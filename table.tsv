@@ -7,7 +7,7 @@ SYNTAX	NAME	DESCRIPTION	EXAMPLE
 {*/y#x}	Power	Integer power for positive y	{*/y#x}[2;5] -> 32
 rot:{y@(#y)!x+!#y}	Rotate	Rotate y by x 	rot[3;!10] -> 3 4 5 6 7 8 9 0 1 2
 "upr:{`c$x-(32*&97 26)x}"	Uppercase	Upper case of all alphabetic chars	"upr ""happy"" -> ""HAPPY"""
-"socat TCP4-LISTEN:5556,reuseaddr,fork EXEC:""k"""	Remotely k 	Bind k process to 5556 port	socat - TCP4:127.0.0.1:5556
+"socat TCP4-LISTEN:5556,reuseaddr,fork EXEC:""k,stderr"""	Remotely k 	Bind k process to 5556 port	socat - TCP4:127.0.0.1:5556
 ".""\\curl 'xxx'"""	Curl	Call curl in k.	".""\\curl -s -o /dev/null -w '%{http_code}' 'https://www.google.org/'"" -> ,""200"""
 +`a`b`c!3 3#!9	Create table	Create table by flip map	+`a`b`c!3 3#!9 -> +`a`b`c!(0 1 2;3 4 5;6 7 8)
 a,:`a`b`c!9,10,11	Insert	Append/insert row to table	a:+`a`b!(0 1 ; 2 3);a,`a`b!9,10 -> +`a`b!(0 1 9;2 3 10)
