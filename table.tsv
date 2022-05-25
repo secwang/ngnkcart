@@ -1,8 +1,8 @@
 SYNTAX	NAME	DESCRIPTION	EXAMPLE
-+/	Sum	function to sum an array. Can be used with initial value.	+/1 2 3 4 5 -> 15
++/	Sum	Function to sum an array. Can be used with initial value.	+/1 2 3 4 5 -> 15
 -':	Deltas	Function to find the differences between members of an array. Comes in various flavors.	-':1 2 3 4 -> 1 1 1 1
-|+:	Rotate 90 degrees	left  function which rotates a matrix 90 degrees left(counterclockwise).	(|+:)@3 3#!9 -> (2 5 8; 1 4 7;0 3 6) 
-@/1<:\	Sort	Tacit form for sorting	@/1<:\8 3 7 1 -> 1 3 7 8
+|+:	Rotate 90 degrees left	Function which rotates a matrix 90 degrees left(counterclockwise).	(|+:)@3 3#!9 -> (2 5 8; 1 4 7;0 3 6) 
+@/1<:\	Sort	Tacit function for sorting	@/1<:\8 3 7 1 -> 1 3 7 8
 {x|-x}	Absolute value	Get absolute value of a number	{x|-x}-1 -> 1
 {*/y#x}	Power	Integer power for positive y	{*/y#x}[2;5] -> 32
 rot:{y@(#y)!x+!#y}	Rotate	Rotate y by x 	rot[3;!10] -> 3 4 5 6 7 8 9 0 1 2
@@ -15,6 +15,6 @@ a@(1<)_a[`a]	Select use where function	Select by where condition	a:+`a`b!(0 1 ; 
 a@a[`a]?0	Select use ?	Select if equal	a:+`a`b!(0 1 ; 2 3);a@a[`a]?0 -> `a`b!0 2
 @[x;i;:;v]	Update	Update value at x[i] with v	a:+`a`b!(0 1 ; 2 3);@[a;0;:;(3,4)] -> +`a`b!(3 1;4 3)
 a@(1<)_a[`a]	Delete	Delete from table is reverse select	a:+`a`b!(0 1 ; 2 3);a@(1<)_a[`a] -> +`a`b!(0 1;2 3)
-|/	Max	Get the maximum of items	|/3 5 2 -> 5
-&/	Min	Get the minimum of iterms	&/3 5 2 -> 2
+|/	Max	Get the maximum of an array	|/3 5 2 -> 5
+&/	Min	Get the minimum of an array	&/3 5 2 -> 2
 avg:{(+/x)%#x}	Avg	Get the arithmetic mean	avg:{(+/x)%#x};avg 1 2 3 4 5 -> 3.0
