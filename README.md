@@ -5,7 +5,9 @@ Join The APL Farm [discord](https://discord.gg/ZN9wVvpv) to contribute snippets,
 or just PR them.  
 
 ## search 
-For now, open [table.csv](https://github.com/secwang/ngnkcart/blob/main/table.tsv).  
+Available at https://secwang.github.io/ngnkcart.  
+The interface is a direct clone of APLcart, so the [usage instructions](https://github.com/abrudz/aplcart#usage) are the same.  
+Alternatively, open [table.csv](https://github.com/secwang/ngnkcart/blob/main/table.tsv).  
 Type in the github search box.  
 You can add this file to your bookmarks.  
 
@@ -16,7 +18,7 @@ Goals:
 - [x] discord search and commit
 - [x] cli search
 - [x] searchable tsv page.
-- [ ] static web page
+- [x] static web page
 
 # commandline use  
 Install [fzf](https://github.com/junegunn/fzf).  
