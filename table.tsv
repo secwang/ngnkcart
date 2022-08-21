@@ -1,12 +1,14 @@
 SYNTAX	NAME	DESCRIPTION	EXAMPLE
-+/	Sum	Function to sum an array. Can be used with initial value.	+/1 2 3 4 5 -> 15
--':	Deltas	Function to find the differences between members of an array. Comes in various flavors.	-':1 2 3 4 -> 1 1 1 1
-|+:	Rotate 90 degrees left	Function which rotates a matrix 90 degrees left(counterclockwise).	(|+:)@3 3#!9 -> (2 5 8; 1 4 7;0 3 6) 
-@/1<:\	Sort	Tacit function for sorting	@/1<:\8 3 7 1 -> 1 3 7 8
-{x|-x}	Absolute value	Get absolute value of a number	{x|-x}-1 -> 1
-{*/y#x}	Power	Integer power for positive y	{*/y#x}[2;5] -> 32
-rot:{y(#y)!x+!#y}	Rotate	Rotate y by x 	rot[3;!10] -> 3 4 5 6 7 8 9 0 1 2
-upr:{`c$x-(32*&97 26)x}	Uppercase	Upper case of all alphabetic chars	upr ""happy"" -> ""HAPPY""
++/N	Sum	Function to sum an array. Can be used with initial value.	+/1 2 3 4 5 -> 15
+-':N	Deltas	Function to find the differences between members of an array. Comes in various flavors.	-':1 2 3 4 -> 1 1 1 1
+|+:m	Rotate 90 degrees left	Function which rotates a matrix 90 degrees left(counterclockwise).	(|+:)@3 3#!9 -> (2 5 8; 1 4 7;0 3 6) 
+{x@<x}[X]	Sort	Function for sorting	{x@<x}@8 3 7 1 -> 1 3 7 8
+(?,)[X;Y]	Set Union	Set Union: Keep unique elements from both arrays	(?,)[1 2 3 4;4 5 6 7] -> 1 2 3 4 5 6 7
+{x^x^y}[X;Y]	Set Intersection	Set Intersection: common elements from both arrays	{x^x^y}[1 2 3 4;2 3 4 5] -> 2 3 4
+{x|-x}[M]	Absolute value	Get absolute value (make number(s) positive)	{x|-x}-1 -> 1
+{*/y#x}[Is;Js]	Power	Integer power for positive y	{*/y#x}[2;5] -> 32
+{y(#y)!x+!#y}[Is;A]	Rotate left	Rotate A by Is elements to the left 	{y(#y)!x+!#y}[3;!10] -> 3 4 5 6 7 8 9 0 1 2
+{`c$x-(32*&97 26)x}[C]	Uppercase	Upper case of all alphabetic chars	{`c$x-(32*&97 26)x}@"happy" -> "HAPPY"
 socat TCP4-LISTEN:5556,reuseaddr,fork EXEC:""k,stderr""	Remotely k 	Bind k process to 5556 port	socat - TCP4:127.0.0.1:5556
 ."\\curl 'xxx'"	Curl	Call curl in k.	."\\curl -s -o /dev/null -w '%{http_code}' 'https://www.google.org/'" -> ,"200"
 +`a`b`c!3 3#!9	Create table	Create table by flip map	+`a`b`c!3 3#!9 -> +`a`b`c!(0 1 2;3 4 5;6 7 8)
@@ -15,6 +17,68 @@ a@(1<)_a[`a]	Select use where function	Select by where condition	a:+`a`b!(0 1 ; 
 a@a[`a]?0	Select use ?	Select if equal	a:+`a`b!(0 1 ; 2 3);a@a[`a]?0 -> `a`b!0 2
 @[x;i;:;v]	Update	Update value at x[i] with v	a:+`a`b!(0 1 ; 2 3);@[a;0;:;(3,4)] -> +`a`b!(3 1;4 3)
 a@(1<)_a[`a]	Delete	Delete from table is reverse select	a:+`a`b!(0 1 ; 2 3);a@(1<)_a[`a] -> +`a`b!(0 1;2 3)
-|/	Max	Get the maximum of an array	|/3 5 2 -> 5
-&/	Min	Get the minimum of an array	&/3 5 2 -> 2
-avg:{(+/x)%#x}	Avg	Get the arithmetic mean	avg:{(+/x)%#x};avg 1 2 3 4 5 -> 3.0
+|/[A]	Max, Any	Get the maximum of an array/are any elements 1?	|/3 5 2 -> 5 |/1 0 1 -> 1
+&/[A]	Min, All	Get the minimum of an array/are all elements 1?	&/3 5 2 -> 2 &/1 1 1 -> 1
+{(+/x)%#x}	Avg	Get the arithmetic mean	{(+/x)%#x}@1 2 3 4 5 -> 3.0
+(::)[X]	Identity	Identity verb	(::)[5] -> 5
+X : Y	Right	Return right value	1 : 5 -> 5
++m	Transpose matrix	Transpose list of lists	+(1 2;3 4) -> (1 3;2 4)
+A+B	Addition	Add two numbers/conforming lists	1+2 -> 3; 1 2 3+3 4 5 -> 4 6 8
+-A	Negate	Negate a number: same as {0-x}	-:[1] -> 1
+A-B	Subtraction	Difference of two numbers/conforming lists	1-2 -> -1; 3 4 5-1 2 3 -> 2 2 2
+*X	First	First element of a list	*:1 2 3 -> 1
+A*B	Multiplication	Product of two numbers/conforming lists	1*2 -> 2; 3 4 5*1 2 3 -> 3 8 15
+%A	Square Root	Floating point square root of a number	%:2 -> 1.4142135623730951
+A%B	Division	Divide two numbers/conforming lists	1%2 -> 0.5
+!I	enum, odometer	Range/generalized range from 0 to I-1 inclusive	!5 -> 0 1 2 3 4; !1 2 -> (0 0;0 1)
+!D	keys	Keys of a dictionary	!1 2 3!3 4 5 -> 1 2 3
+Is!I	mod, modulo, remainder, residue	Modulus of number and array	10!1234 567 -> 4 7
+X!Y	dict, create dictionary	Create dictionary from two arrays	`a`b!1 2 -> `a`b!1 2 
+&I	where	Where: repeat index of value by value	&1 0 1 4 2 -> 0 2 3 3 3 3 4 4 
+&m	deepwhere	Repeat multidimensional index of value by value	&(0 1 0;1 0 0;1 1 1) -> (0 1 2 2 2;1 0 0 1 2)
+A&B	min/and	Minimum of two values/Boolean AND	2&-1 3 -> -1 2   0 0 1 1&0 1 0 1 -> 0 0 0 1	
+|A	reverse	Reverse an array	|"abc" -> "cba"   |12 -> 12
+N|N	max/or	Maximum of two values/Boolean OR	2|-1 3 -> 2 3   0 0 1 1|0 1 0 1 -> 0 1 1 1
+<A	ascend	Grade Up: Indices to sort ascending	<"abacus" -> 0 2 1 3 5 4
+>A	descend	Grade Down: Indices to sort descending	>"abacus" -> 4 5 3 1 0 2
+<S	open	Open a file, return tie number	fd:<`"/path/to/file.txt"
+>Is	close	Close a file by tie number	>fd
+A<B	less	Lesser than	0 2<1 -> 1 0
+A>B	more	Greater than	0 1>0 2 -> 0 0
+=X	group	Group indices by values	="abracadabra" -> "abrcd"!(0 3 5 7 10;1 8;2 9;,4;,6)
+=Is	unitmat	Identity matrix of size x	=3 -> (1 0 0;0 1 0;0 0 1)
+A=B	equal	Equal to	0 1 2=0 1 3 -> 1 1 0
+~X	not	Boolean not: true if 0, false otherwise	~(0 2;``a;"a \0";::;{}) -> (1 0;1 0;0 0 1;1;0)
+X~Y	match	Exact Match	2 3~2 3 -> 1   "4"~4 -> 0   0~0.0 -> 0
+,X	enlist	Single element list containing argument	,0 -> ,0   ,0 1 -> ,0 1   ,`a!1 -> +(,`a)!,,1
+X,Y	concat	Concatenate two lists	0,1 2 -> 0 1 2  "a",1 -> ("a";1)
+D,D	merge	Merge two dictionaries	(`a`b!0 1),`b`c!2 3 -> `a`b`c!0 2 3
+^X	null	Is each atom null?	^(" a";0 1 0N;``a;0.0 0n) -> (1 0;0 0 1;1 0;0 1)
+s^X	fill	Fill in x at null atoms in y	1^0 0N 2 3 0N -> 0 1 2 3 1   "b"^" " -> "b"
+X^Y	without	Set difference: remove elements in y from x	"abracadabra"^"bc" -> "araadara"
+#X	length	Length of list	#"abc" -> 3   #4 -> 1   #`a`b`c!0 1 0 -> 3
+I#Ys	reshape	Repeat element y, x times	3#2 -> 2 2 2
+I#Y	reshape	Multidimensional reshape	2 3#` -> (```;```)
+f#Y	replicate	Filter: Apply function to list, filter list using Where	(3>#:')#(0;2 1 3;5 4) -> (0;5 4)   {2}#"ab" -> "aabb"
+X#D	take	New dictionaru with specified keys	`c`d`f#`a`b`c`d!1 2 3 4 -> `c`d`f!3 4 0N
+_N	floor	Floor: round number down	_12.34 -12.34 -> 12 -13
+_C	lowercase	Convert to lowercase	_"Ab" -> "ab"
+Is_Y	drop	Drop x elements from the beginning of y	2_"abcde" -> "cde"   `a`c_`a`b`c!0 1 2 -> (,`b)!,1
+I_Y	cut	Cut y at indices in x	2 4 4_"abcde" -> ("cd";"";,"e")
+f_Y	weed	Filter false: Filter, but keep values that are at zeroes	out  (3>#:')_(0;2 1 3;5 4) -> ,2 1 3
+X_Is	delete	Delete element at index y from x	"abcde"_2 -> "abde"
+$C	string	Convert atoms to strings	$(12;"ab";`cd;+) -> ("12";(,"a";,"b");"cd";,"+")
+Is$C	pad	Pad string with spaces to length x 	5$"abc" -> "abc  "   -3$"a" -> "  a"
+S$Y	cast	Cast to type based on symbol(s) in x	`c$97 -> "a"   `i$-1.2 -> -1   `$"a" -> `a
+s$Y	int	Parse as integer	`I$"-12" -> -12
+?X	uniq, nub, nubsieve	Unique values of list	?"abacus" -> "abcus"
+?Is	uniform	generate x random floats in [0,1)	?2 -> 0.6438163747387873 0.8852656305774402 /random
+X?Y	find	find elements of y in x	"abcde"?"bfe" -> 1 0N 4
+Is?X	roll	Randomly choose x elements from !y	3?1000 -> 11 398 293   1?0 -> ,-8164324247243690787
+Is?X	deal	Randomly choose x elements from y	-3?1000 -> 11 398 293 /guaranteed distinct
+@X	type	Type of x	@1 -> `b   @"ab" -> `C   @() -> `A   @(@) -> `v
+X@Y	apply(1)	Apply function/array/dict to single argument	{x+1}@2 -> 3   "abc"@1 -> "b"   (`a`b!0 1)@`b -> 1
+.S	get	Get value of symbol	a:1;.`a -> 1   b.c:2;.`b`c -> 2
+.C	eval	Evaluate string as K code	."1+2" -> 3
+.D	values	Values of a dictionary	.`a`b!0 1 -> 0 1
+X.Y	apply(n)	Apply function/array/dict to multiple arguments	{x*y+1}. 2 3 -> 8   (`a`b`c;`d`e`f). 1 0 -> `d
