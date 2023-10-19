@@ -36,7 +36,7 @@ Is!I	mod, modulo, remainder, residue	Modulus of number and array	10!1234 567 -> 
 X!Y	dict, create dictionary	Create dictionary from two arrays	`a`b!1 2 -> `a`b!1 2 
 &I	where	Where: repeat index of value by value	&1 0 1 4 2 -> 0 2 3 3 3 3 4 4 
 &m	deepwhere	Repeat multidimensional index of value by value	&(0 1 0;1 0 0;1 1 1) -> (0 1 2 2 2;1 0 0 1 2)
-A&B	min/and	Minimum of two values/Boolean AND	2&-1 3 -> -1 2   0 0 1 1&0 1 0 1 -> 0 0 0 1	
+A&B	min/and	Minimum of two values/Boolean AND	2&-1 3 -> -1 2   0 0 1 1&0 1 0 1 -> 0 0 0 1
 |A	reverse	Reverse an array	|"abc" -> "cba"   |12 -> 12
 N|N	max/or	Maximum of two values/Boolean OR	2|-1 3 -> 2 3   0 0 1 1|0 1 0 1 -> 0 1 1 1
 <A	ascend	Grade Up: Indices to sort ascending	<"abacus" -> 0 2 1 3 5 4
@@ -82,3 +82,4 @@ X@Y	apply(1)	Apply function/array/dict to single argument	{x+1}@2 -> 3   "abc"@1
 .C	eval	Evaluate string as K code	."1+2" -> 3
 .D	values	Values of a dictionary	.`a`b!0 1 -> 0 1
 X.Y	apply(n)	Apply function/array/dict to multiple arguments	{x*y+1}. 2 3 -> 8   (`a`b`c;`d`e`f). 1 0 -> `d
+(+/*)\:[m;n]	Matrix multiplication	Multiply compatible matrices m,n	(+/*)\:[|=2;(1 2;3 4)] -> (3 4;1 2)
